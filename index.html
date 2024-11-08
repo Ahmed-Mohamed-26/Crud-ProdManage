@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <title>Product Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        .form-control, .btn {
+            border-radius: 0.5rem;
+        }
+        .form-control {
+            height: 45px;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            font-size: 16px;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .table {
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table thead {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .table td {
+            padding: 12px;
+        }
+        .py-5 {
+            margin-top: 40px;
+        }
+        .section-header {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Product Management Form -->
+        <div class="card p-4 mb-5">
+            <h3 class="section-header text-center">Add Product</h3>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="ProductType">Product Type</label>
+                    <select id="ProductType" class="form-control" onchange="filterPhoneModels()">
+                        <option value="">Select Type</option>
+                        <option value="iphone">iPhone</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="oppo">Oppo</option>
+                        <option value="realme">Realme</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductName">Product Name</label>
+                    <select id="ProductName" class="form-control">
+                        <option value="">Select Product</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductPrice">Product Price</label>
+                    <input type="number" class="form-control" id="ProductPrice" placeholder="Enter Product Price" />
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductDesc">Product Description</label>
+                    <textarea class="form-control" id="ProductDesc" placeholder="Enter Product Description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="ProductQuantity">Quantity</label>
+                    <input type="number" class="form-control" id="ProductQuantity" placeholder="Enter Quantity" min="1" />
+                </div>
+
+                <button type="button" class="btn btn-info" onclick="addProduct()" id="mainBtn">Add Product</button>
+            </form>
+        </div>
+
+        <!-- Product Table -->
+        <div>
+            <h4 class="section-header">Product List</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Type</th>
+                        <th>Product Description</th>
+                        <th>Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableRow"></tbody>
+            </table>
+        </div>
+
+        <!-- Sales Summary Section -->
+        <div class="py-5">
+            <h4 class="section-header">Total Sales</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity Sold</th>
+                        <th>Total Sales (EGP)</th>
+                    </tr>
+                </thead>
+                <tbody id="salesSummary"></tbody>
+            </table>
+        </div>
+
+        <!-- Return Products Section -->
+        <div class="py-5">
+            <h4 class="section-header">Returned Products</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Quantity Returned</th>
+                        <th>Total Return Value (EGP)</th>
+                        <th>Return Reason</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="returnSummary"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
