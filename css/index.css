@@ -1,0 +1,59 @@
+ body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        .form-control, .btn {
+            border-radius: 0.5rem;
+        }
+        .form-control {
+            height: 45px;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+            font-size: 16px;
+        }
+        .btn-info:hover {
+            background-color: #138496;
+            border-color: #117a8b;
+        }
+        .table {
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .table thead {
+            background-color: #17a2b8;
+            color: white;
+        }
+        .table td {
+            padding: 12px;
+        }
+        .py-5 {
+            margin-top: 40px;
+        }
+        .section-header {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+.table td.description-cell {
+     max-width: 350px;         
+    white-space: normal;      
+    word-break:  pre-line;  
+    line-height: 1.6;         
+    direction: auto;          
+    unicode-bidi: plaintext;
+    text-align: start;  /
+}
