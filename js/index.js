@@ -15,6 +15,22 @@ displayProducts(productContainer);
 if (returnContainer.length !== 0) {
 displayReturnSummary();
 }
+
+// Check if all inputs are filled
+function validateForm() {
+    if (productName.value && productType.value && productPrice.value && productQuantity.value) {
+        mainBtn.removeAttribute("disabled");
+    } else {
+        mainBtn.setAttribute("disabled", "true");
+    }
+}
+
+// Attach event listeners to inputs
+productName.addEventListener("input", validateForm);
+productType.addEventListener("change", validateForm);
+productPrice.addEventListener("input", validateForm);
+productQuantity.addEventListener("input", validateForm);
+productDesc.addEventListener("input", validateForm); 
 //////////////////////////////////////code Product List////////////////////////////////////////////////
 // Filter the product names based on the selected product type
 function filterPhoneModels() {
@@ -29,7 +45,21 @@ function filterPhoneModels() {
         productName.innerHTML = `<option value="">Select Samsung Model</option>
             <option value="Samsung Galaxy S23">Samsung Galaxy S23</option>
             <option value="Samsung Galaxy S22">Samsung Galaxy S22</option>`;
-    } else {
+    } else   if (type === 'oppo') {
+        productName.innerHTML = `<option value="">Select oppo Model</option>
+            <option value="OPPO Reno14">OPPO Reno14</option>
+            <option value="OPPO A5">OPPO A5</option>
+            <option value="OPPO Find N5">OPPO Find N5</option>
+            <option value="OPPO A3x">OPPO A3x</option>`;
+    }
+    else   if (type === 'realme') {
+        productName.innerHTML = `<option value="">Select oppo Model</option>
+            <option value="realme C17">realme C17</option>
+            <option value="realme C71">realme C71</option>
+            <option value="realme 14">realme 14</option>
+            <option value="realme 15">realme 15</option>`;
+    }
+    else {
         productName.innerHTML = `<option value="">Select Product</option>`;
     }
 }
@@ -62,12 +92,12 @@ function displayProducts(productList) {
             <td>${productList[i].proName}</td>
             <td>${productList[i].proPrice} EGP</td>
             <td>${productList[i].proType}</td>
-            <td>${productList[i].proDesc}</td>
+            <td class="description-cell">${productList[i].proDesc.replace(/\n/g, "<br>")}</td>
             <td>${productList[i].quantity}</td>
             <td>
-                <button class="btn btn-success" onclick="payProduct(${i})">Pay</button>
-                <button class="btn btn-warning" onclick="updateProduct(${i})">Update</button>
-                <button class="btn btn-danger" onclick="deleteProduct(${i})">Delete</button>
+                <button class="btn btn-success  m-1" onclick="payProduct(${i})">Pay</button>
+                <button class="btn btn-warning  m-1" onclick="updateProduct(${i})">Edit</button>
+                <button class="btn btn-danger  m-1" onclick="deleteProduct(${i})">Delete</button>
             </td>
         </tr>`;
     }
@@ -205,8 +235,8 @@ function displayReturnSummary() {
             <td>${returnContainer[i].totalReturnValue} EGP</td>
             <td>${returnContainer[i].returnReason}</td>
             <td>
-                <button class="btn btn-primary" onclick="addReturnToMain(${i})">Add</button>
-                <button class="btn btn-danger" onclick="deleteReturn(${i})">Delete</button>
+                <button class="btn btn-primary m-1" onclick="addReturnToMain(${i})">Add</button>
+                <button class="btn btn-danger m-1" onclick="deleteReturn(${i})">Delete</button>
             </td>
         </tr>`;
     }

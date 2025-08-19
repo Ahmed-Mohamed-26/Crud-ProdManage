@@ -57,6 +57,17 @@
         label {
             font-weight: bold;
         }
+        /* خلية الوصف */
+.table td.description-cell {
+     max-width: 350px;         /* عرض مناسب */
+    white-space: normal;      /* يسمح يكسر الأسطر */
+    word-break:  pre-line;   /* يكسر الكلمات الطويلة */
+    line-height: 1.6;         /* يوسع المسافة بين الأسطر */
+    direction: auto;          /* يخلي المتصفح يحدد الاتجاه حسب النص (عربي → RTL ، إنجليزي → LTR) */
+    unicode-bidi: plaintext;
+    text-align: start;  /
+}
+
     </style>
 </head>
 <body>
@@ -98,7 +109,7 @@
                     <input type="number" class="form-control" id="ProductQuantity" placeholder="Enter Quantity" min="1" />
                 </div>
 
-                <button type="button" class="btn btn-info" onclick="addProduct()" id="mainBtn">Add Product</button>
+                <button type="button" class="btn btn-info mt-2" onclick="addProduct()" id="mainBtn" disabled>Add Product</button>
             </form>
         </div>
 
